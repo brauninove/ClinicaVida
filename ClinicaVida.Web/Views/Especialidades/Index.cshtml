@@ -1,0 +1,32 @@
+@model IEnumerable<Especialidade>
+
+@{
+    ViewData["Title"] = "Especialidades";
+    var contagem = ViewBag.Contagem as Dictionary<int, int>;
+}
+
+<h1>Especialidades</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Especialidade</th>
+            <th>Quantidade de médicos</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var especialidade in Model)
+        {
+            var quantidade = contagem != null &&
+                contagem.TryGetValue(especialidade.Id, out var total)
+                ? total : 0;
+
+            <tr>
+                <td>@especialidade.Nome</td>
+                <td>@quantidade</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Medicos" asp-action="Index">Ver médicos</a>

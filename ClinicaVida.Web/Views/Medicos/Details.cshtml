@@ -1,0 +1,18 @@
+@model Medico
+
+@{
+    ViewData["Title"] = "Detalhes do Médico";
+}
+
+<h1>Detalhes do Médico</h1>
+
+<div>
+    <h4>@Model.Nome</h4>
+    <hr />
+    <p><strong>Identificação:</strong> @Model.Id</p>
+    <p><strong>Nome:</strong> @Model.Nome</p>
+    <p><strong>CRM:</strong> @Model.CRM</p>
+    <p><strong>Especialidade:</strong> @Model.Especialidade?.Nome</p>
+</div>
+
+<a asp-action="Index">Voltar para a lista</a>
